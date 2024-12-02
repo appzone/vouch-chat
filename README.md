@@ -2,13 +2,13 @@
 
 ## Date submission
 
-> >
+> > 3 December 2024 00:25:00 GMT+7
 
 ---
 
 ## Instruction to run
 
-> > Clone the repository  
+> > Clone the repository   https://github.com/appzone/vouch-chat.git
 > > Pre-req :: install nodejs, npm, docker, docker-compose  
 > > In the root folder run this command  
 > > `docker-compose up --build --force-recreate`
