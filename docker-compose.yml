@@ -1,0 +1,44 @@
+version: "3.8"
+
+services:
+  # React app service
+  chatroom-app:
+    container_name: chatroom-app
+    build:
+      context: ./chatroom-app
+    ports:
+      - "3000:3000"
+    networks:
+      - app-network
+    volumes:
+      - ./chatroom-app:/usr/src/app
+    environment:
+      - NODE_ENV=production
+
+  # Node.js WebSocket service
+  chat-backend:
+    container_name: chat-backend
+    build:
+      context: ./chat-backend
+    ports:
+      - "4000:4000"
+    networks:
+      - app-network
+    volumes:
+      - ./chat-backend:/usr/src/app
+    environment:
+      - NODE_ENV=production
+
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    networks:
+      - app-network
+    volumes:
+      - ./chat-backend/db:/data/db # Mount local db folder to MongoDB container
+
+networks:
+  app-network:
+    driver: bridge
